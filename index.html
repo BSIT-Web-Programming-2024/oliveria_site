@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Honey Online Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.light-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    body.dark-mode {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Jumbotron Styling */
+    .jumbotron {
+      margin-bottom: 0;
+      background-image: linear-gradient(to right, #4d1e3edf, #faf8f7);
+      color: white;
+      padding: 50px 25px;
+      box-shadow: 0 4px 8px rgba(133, 107, 107, 0.2);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInDown 1.5s;
+    }
+
+    /* Card Styling */
+    .panel {
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .panel:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 10px rgba(229, 194, 146, 0.2);
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #3d3a3a;
+      color: white;
+      padding: 25px;
+    }
+
+    footer.light-mode {
+      background-color: #eaeaea;
+      color: #000;
+    }
+
+    footer .form-inline input {
+      margin-right: 10px;
+    }
+
+    footer .btn-danger {
+      background-color: #050505;
+      border: none;
+    }
+
+    /* Toggle Icon Styling */
+    .toggle-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      background-color: #ffffff;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .toggle-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .toggle-icon.dark-mode {
+      background-color: #000000;
+      color: #f8f5f5;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInDown 2s ease-in-out;
+    }
+  </style>
+</head>
+<body class="light-mode">
+
+  <div id="modeToggle" class="toggle-icon">
+    <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="4"></line>
+      <line x1="12" y1="20" x2="12" y2="23"></line>
+      <line x1="1" y1="12" x2="4" y2="12"></line>
+      <line x1="20" y1="12" x2="23" y2="12"></line>
+    </svg>
+  </div>
+
+  <div class="jumbotron text-center">
+    <h1 style="font-size: 8vw; font-weight: bold;">VERIA'S</h1>      
+    <p style="font-size: 1.8rem;">WALK WITH CONFIDENCE!</p>
+  </div>
+      
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Products</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" data-toggle="modal" data-target="#accountModal"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="accountModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="max-width: 50%; width: 90%; height: 80%; margin: auto;">
+      <div class="modal-content" style="height: 90%; background-image: url('6c9d06dfc81fb05ed6ba34914d63db89.jpg'); background-size: cover; background-position: center; color: white;">
+        <div class="modal-header" style="border-bottom: 2px solid rgb(5, 5, 5);">
+          <button type="button" class="close" data-dismiss="modal" style="color: rgb(9, 9, 9); font-size: 20px; font-weight: bold;">&times;</button>
+          <h4 class="modal-title" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); font-weight: bold;">Your Account</h4>
+        </div>
+        <div class="modal-body" style="overflow-y: auto;">
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#login" style="color: rgb(9, 9, 9); font-weight: bold;">Log In</a></li>
+            <li><a data-toggle="tab" href="#register" style="color: rgb(12, 12, 12); font-weight: bold;">Sign In</a></li>
+          </ul>
+          <div class="tab-content">
+            <!-- Log In Tab -->
+            <div id="login" class="tab-pane fade in active">
+              <h3 style="margin-top: 15px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Log In</h3>
+              <form>
+                <div class="form-group">
+                  <label for="email" style="color: rgb(250, 246, 246);">Email:</label>
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                  <label for="pwd" style="color: rgb(250, 250, 250);">Password:</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="background-color: rgba(255, 255, 255, 0.1); color: rgb(254, 250, 250); border: 1px solid rgb(245, 245, 245); font-size: 25px; font-weight: bold;">Submit</button>
+              </form>
+            </div>
+            <!-- Register Tab -->
+            <div id="register" class="tab-pane fade">
+              <h3 style="margin-top: 15px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Sign In</h3>
+              <form>
+                <div class="form-group">
+                  <label for="name" style="color: white;">Name:</label>
+                  <input type="text" class="form-control" id="name" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                  <label for="emailReg" style="color: white;">Email:</label>
+                  <input type="email" class="form-control" id="emailReg" placeholder="Enter email" required>
+                </div>
+                <div class="form-group">
+                  <label for="pwdReg" style="color: white;">Password:</label>
+                  <input type="password" class="form-control" id="pwdReg" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-block" style="background-color: rgba(255, 255, 255, 0.1); color: rgb(243, 239, 239); border: 1px solid white; font-size: 25px; font-weight: bold;">Sign In</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="border-top: 2px solid white;">
+          <button type="button" class="btn btn-danger btn-block" data-dismiss="modal" style="background-color: rgba(255, 255, 255, 0.1); color: white; border: 1px solid white; font-size: 25px; font-weight: bold;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="container fade-in">
+    <div class="row">
+      <!-- Product 1 -->
+      <div class="col-sm-4">
+        <div class="panel panel-primary" onclick="showProductDetails('Bubblegum Pink Star Sneakers', 'Bubblegum Pink Star Sneakers in Black.jpg', 'Stylish black sneakers with pink stars. Perfect for casual wear!', '50% OFF!')">
+          <div class="panel-heading" style="font-size: 1.5rem; font-weight: bold;">LIMITED OFFER</div>
+          <div class="panel-body"><img src="Bubblegum Pink Star Sneakers in Black.jpg" class="img-responsive" alt="LIMITED OFFER"></div>
+          <div class="panel-footer" style="font-size: 1.2rem;">GET 50% OFF!</div>
+        </div>
+      </div>
+  
+      <!-- Product 2 -->
+      <div class="col-sm-4">
+        <div class="panel panel-danger" onclick="showProductDetails('Christmas Deal', '1fc593a997f2b7351035163ba8d2f520.jpg', 'Enjoy the holiday season with our special Christmas deal. Free shipping included!', 'FREE SHIPPING!')">
+          <div class="panel-heading" style="font-size: 1.5rem; font-weight: bold;">CHRISTMAS DEAL</div>
+          <div class="panel-body"><img src="1fc593a997f2b7351035163ba8d2f520.jpg" class="img-responsive" alt="CHRISTMAS DEAL"></div>
+          <div class="panel-footer" style="font-size: 1.2rem;">FREE SHIPPING!</div>
+        </div>
+      </div>
+  
+      <!-- Product 3 -->
+      <div class="col-sm-4">
+        <div class="panel panel-success" onclick="showProductDetails('Retro Skate Shoes', 'Skate Shoes Retro Y2K Star Punk Hip-hop Skateboard Sneakers - Denim Blue _ 36.jpg', 'Trendy denim blue retro skate shoes. Unleash your inner skater!', '20% OFF ON YOUR PURCHASE!')">
+          <div class="panel-heading" style="font-size: 1.5rem; font-weight: bold;">EXCLUSIVE DEAL</div>
+          <div class="panel-body"><img src="Skate Shoes Retro Y2K Star Punk Hip-hop Skateboard Sneakers - Denim Blue _ 36.jpg" class="img-responsive" alt="Exclusive Deal"></div>
+          <div class="panel-footer" style="font-size: 1.2rem;">20% OFF ON YOUR PURCHASE!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product Modal -->
+  <div id="productModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 id="modalProductTitle" class="modal-title"></h4>
+        </div>
+        <div class="modal-body text-center">
+          <img id="modalProductImage" src="" alt="Product Image" class="img-responsive" style="margin: 0 auto; max-height: 300px;">
+          <p id="modalProductDescription" style="margin-top: 15px;"></p>
+          <h3 id="modalProductOffer" style="color: green; font-weight: bold;"></h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Function to display product details in a modal
+    function showProductDetails(title, imageUrl, description, offer) {
+      document.getElementById('modalProductTitle').textContent = title;
+      document.getElementById('modalProductImage').src = imageUrl;
+      document.getElementById('modalProductDescription').textContent = description;
+      document.getElementById('modalProductOffer').textContent = offer;
+  
+      // Show the modal
+      $('#productModal').modal('show');
+    }
+  </script>
+  
+  
+  <footer class="container-fluid text-center">
+    <p>© 2024 VERIA'S Online Store. All rights reserved.</p>  
+  </footer>
+
+  <script>
+    // Dark/Light Mode Toggle
+    const modeToggle = document.getElementById("modeToggle");
+    const icon = document.getElementById("icon");
+    const body = document.body;
+
+    modeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode");
+
+      if (body.classList.contains("dark-mode")) {
+        icon.innerHTML = `<circle cx="12" cy="12" r="9"></circle><circle cx="16" cy="8" r="4" fill="currentColor"></circle>`;
+      } else {
+        icon.innerHTML = `
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="23"></line>
+          <line x1="1" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="23" y2="12"></line>`;
+      }
+    });
+  </script>
+</body>
+</html>
